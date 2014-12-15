@@ -1,0 +1,24 @@
+{
+  "name": "Parallax",
+  "version": "0.1.0",
+  "description": "Lab do Parallax",
+  "keywords": [
+    "Parallax",
+    "lab",
+    "test"
+  ],
+  "author": "Thiago Lagden",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^1.0.1",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-jade": "^0.13.0",
+    "grunt-contrib-sass": "^0.8.1",
+    "grunt-contrib-watch": "^0.6.x",
+    "grunt-web-server": "^1.2.3",
+    "jshint-stylish": "^1.0.0",
+    "load-grunt-tasks": "^0.6.0",
+    "time-grunt": "^1.0.0"
+  }
+}
