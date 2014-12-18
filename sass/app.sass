@@ -1,2 +1,279 @@
+@charset "UTF-8"
+
+// Mixin
+@import mixin
+
+// colors
+$color-1: #021725 // blue
+$color-2: #e36767 // red
+$color-3: #fff // white
+
+// fonts
+$primary-font: 'Source Sans Pro', sans-serif
+
+// header height
+$header-height-S: 50px
+$header-height-M: 80px
+
+// z-index
+$content-zindex: 1
+$nav-zindex: 2
+$header-zindex: 3
+
+// gutter
+$gutter: 20px
+
+*,
+*:before,
+*:after
+  box-sizing: border-box
+
+html, body
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  // overflow: hidden
+
 body
   background: red
+  &.overflow-hidden
+    overflow: hidden
+
+nav, ul
+  margin: 0
+  padding: 0
+
+.cd-header
+  width: 100%
+  position: relative
+  background: green
+  z-index: $header-zindex
+
+.cd-logo
+  position: absolute
+  top: $gutter
+  left: $gutter
+  bottom: auto
+  right: auto
+  width: 39px
+  height: 50px
+  padding: 0
+  margin: 0
+  background:
+    image: url('../images/logo.svg')
+    repeat: no-repeat
+    size: cover
+  overflow: hidden
+  text-indent: 100%
+  white-space: nowrap
+
+.cd-primary-nav-trigger
+  position: absolute
+  right: $gutter
+  top: $gutter
+  display: flex
+  flex-flow: row nowrap
+  align-items: center
+
+  .cd-ckbox
+    /* autoprefixer: off */
+    -moz-appearance: none
+    -webkit-appearance: none
+    appearance: none
+    /* autoprefixer: on */
+    position: absolute
+    top: 0
+    left: 0
+    bottom: auto
+    right: auto
+    opacity: 0
+    width: 100%
+    height: 100%
+    cursor: pointer
+    &:focus
+      outline: none
+
+  .cd-menu-text
+    flex: 0 1 auto
+    color: $color-3
+    text-transform: uppercase
+    font-weight: 700
+    margin-right: 5px
+    font-family: Consolas, 'Liberation Mono', Courier, monospace
+
+  .cd-menu-icon
+    flex: 0 1 auto
+    position: relative
+    width: 18px
+    height: 2px
+    background-color: $color-3
+    transition: background-color .3s
+
+    &::before, &:after
+      content: ''
+      width: 100%
+      height: 100%
+      position: absolute
+      background-color: $color-3
+      right: 0
+      transition: transform 0.3s, top 0.3s, background-color 0s
+
+    &::before
+      top: -5px
+
+    &::after
+      top: 5px
+
+  .cd-ckbox:checked ~ .cd-menu-icon
+
+    background-color: rgba($color-3, 0)
+
+    &::before,
+    &::after
+      background-color: rgba($color-3, 1)
+
+    &::before
+      top: 0
+      transform: rotate(135deg)
+
+    &::after
+      top: 0
+      transform: rotate(225deg)
+
+.cd-primary-nav
+  position: fixed
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  background: rgba($color-1, .96)
+  text-align: center
+  padding: $header-height-S 0
+  -webkit-backface-visibility: hidden
+  backface-visibility: hidden
+
+  overflow: auto
+  -webkit-overflow-scrolling: touch
+
+  visibility: hidden
+  transform: translateY(-100%)
+  transition: transform 0.4s ease-in-out, visibility 0s 0.4s
+  z-index: $nav-zindex
+
+  &.cd-primary-nav--open
+    visibility: visible
+    transform: translateY(0%)
+    transition: transform 0.4s ease-in-out
+
+  li
+    font-size: 22px
+    font-weight: 300
+    // @include font-smoothing
+    margin: .2em 0
+    text-transform: capitalize
+
+
+  a
+    display: inline-block
+    padding: .4em 1em
+    // @include border-radius
+    transition: background 0.2s
+
+    .no-touch &:hover
+      background-color: $color-2
+
+  .cd-label
+    color: lighten($color-1, 15%)
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 14px
+    margin: 2.4em 0 .8em
+
+
+  // .cd-social
+  //   display: inline-block
+  //   margin: 0 .4em
+
+  //   a
+  //     width: 44px
+  //     height: 44px
+  //     padding: 0
+  //     background-image: url('../img/cd-socials.svg')
+  //     background-repeat: no-repeat
+
+  //     /* image replacement */
+  //     overflow: hidden
+  //     text-indent: 100%
+  //     white-space: nowrap
+
+
+
+  // .cd-facebook a
+  //   background-position: 0 0
+
+
+  // .cd-instagram a
+  //   background-position: -44px 0
+
+
+  // .cd-dribbble a
+  //   background-position: -88px 0
+
+
+  // .cd-twitter a
+  //   background-position: -132px 0
+
+
+  // &.is-visible
+  //   @include transform(translateY(0))
+
+
+  // @include MQ(M)
+  //   padding: $header-height-M 0
+
+
+  // @include MQ(L)
+  //   li
+  //     @include font-size(30px)
+
+
+  //   .cd-label
+  //     @include font-size(16px)
+
+.cd-intro
+  // position: relative
+  width: 100%
+  height: 100vh
+  overflow-x: hidden
+  overflow-y: auto
+  perspective: 1px
+  background: green
+
+  display: flex
+  align-items: center
+  justify-content: center
+
+  z-index: $content-zindex
+
+.cd-intro__layer
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+
+  padding: 100vh 0
+
+.cd-intro__layer--base
+  transform: translateZ(0)
+
+.cd-intro__layer--back
+  transform: translateZ(-1px)
+
+.cd-title
+  color: white
+  +center
+
+.content
+  height: 100vh

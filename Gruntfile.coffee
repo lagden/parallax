@@ -65,16 +65,19 @@ module.exports = (grunt) ->
         tasks: ['sass', 'autoprefixer']
 
       jade:
-        files: ['jade/js/{,*/}*.jade']
+        files: ['jade/html/{,*/}*.jade']
         tasks: ['jade']
 
-    web_server:
-      options:
-        cors: true
-        port: 8000
-        nevercache: true
-        logRequests: true
-      foo: 'bar'
+    browserSync:
+      dev:
+        bsFiles:
+          src: 'css/*.css'
+        options:
+          notify: true
+          watchTask: true
+          port: 8284
+          server:
+            baseDir: './'
 
 
   grunt.registerTask 'default', [
@@ -84,7 +87,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'server', [
     'default'
-    'web_server'
+    'browserSync:dev'
     'watch'
   ]
 
