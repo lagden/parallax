@@ -1,3 +1,220 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -9,10 +226,17 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 body {
   background: red;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  -webkit-perspective: 1px;
+          perspective: 1px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
 body.overflow-hidden {
   overflow: hidden;
@@ -27,7 +251,7 @@ nav, ul {
   width: 100%;
   position: relative;
   background: green;
-  z-index: 3;
+  z-index: 4;
 }
 
 .cd-logo {
@@ -59,7 +283,7 @@ nav, ul {
   -webkit-align-items: center;
           align-items: center;
 }
-.cd-primary-nav-trigger .cd-ckbox {
+.cd-primary-nav-trigger > .cd-ckbox {
   /* autoprefixer: off */
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -74,11 +298,13 @@ nav, ul {
   width: 100%;
   height: 100%;
   cursor: pointer;
+  z-index: 2;
 }
-.cd-primary-nav-trigger .cd-ckbox:focus {
+.cd-primary-nav-trigger > .cd-ckbox:focus {
   outline: none;
 }
-.cd-primary-nav-trigger .cd-menu-text {
+.cd-primary-nav-trigger > .cd-menu-text {
+  position: relative;
   -webkit-flex: 0 1 auto;
           flex: 0 1 auto;
   color: #fff;
@@ -86,8 +312,10 @@ nav, ul {
   font-weight: 700;
   margin-right: 5px;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
+  z-index: 1;
 }
-.cd-primary-nav-trigger .cd-menu-icon {
+.cd-primary-nav-trigger > .cd-menu-icon {
+  position: relative;
   -webkit-flex: 0 1 auto;
           flex: 0 1 auto;
   position: relative;
@@ -95,8 +323,9 @@ nav, ul {
   height: 2px;
   background-color: #fff;
   transition: background-color 0.3s;
+  z-index: 1;
 }
-.cd-primary-nav-trigger .cd-menu-icon::before, .cd-primary-nav-trigger .cd-menu-icon:after {
+.cd-primary-nav-trigger > .cd-menu-icon::before, .cd-primary-nav-trigger > .cd-menu-icon:after {
   content: "";
   width: 100%;
   height: 100%;
@@ -106,24 +335,24 @@ nav, ul {
   transition: -webkit-transform 0.3s, top 0.3s, background-color 0s;
   transition: transform 0.3s, top 0.3s, background-color 0s;
 }
-.cd-primary-nav-trigger .cd-menu-icon::before {
+.cd-primary-nav-trigger > .cd-menu-icon::before {
   top: -5px;
 }
-.cd-primary-nav-trigger .cd-menu-icon::after {
+.cd-primary-nav-trigger > .cd-menu-icon::after {
   top: 5px;
 }
-.cd-primary-nav-trigger .cd-ckbox:checked ~ .cd-menu-icon {
+.cd-primary-nav-trigger > .cd-ckbox:checked ~ .cd-menu-icon {
   background-color: rgba(255, 255, 255, 0);
 }
-.cd-primary-nav-trigger .cd-ckbox:checked ~ .cd-menu-icon::before, .cd-primary-nav-trigger .cd-ckbox:checked ~ .cd-menu-icon::after {
+.cd-primary-nav-trigger > .cd-ckbox:checked ~ .cd-menu-icon::before, .cd-primary-nav-trigger > .cd-ckbox:checked ~ .cd-menu-icon::after {
   background-color: white;
 }
-.cd-primary-nav-trigger .cd-ckbox:checked ~ .cd-menu-icon::before {
+.cd-primary-nav-trigger > .cd-ckbox:checked ~ .cd-menu-icon::before {
   top: 0;
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-.cd-primary-nav-trigger .cd-ckbox:checked ~ .cd-menu-icon::after {
+.cd-primary-nav-trigger > .cd-ckbox:checked ~ .cd-menu-icon::after {
   top: 0;
   -webkit-transform: rotate(225deg);
           transform: rotate(225deg);
@@ -147,7 +376,7 @@ nav, ul {
           transform: translateY(-100%);
   transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
   transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
-  z-index: 2;
+  z-index: 3;
 }
 .cd-primary-nav.cd-primary-nav--open {
   visibility: visible;
@@ -156,18 +385,18 @@ nav, ul {
   transition: -webkit-transform 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out;
 }
-.cd-primary-nav li {
+.cd-primary-nav > ul > li {
   font-size: 22px;
   font-weight: 300;
   margin: 0.2em 0;
   text-transform: capitalize;
 }
-.cd-primary-nav a {
+.cd-primary-nav > ul > li > a {
   display: inline-block;
   padding: 0.4em 1em;
   transition: background 0.2s;
 }
-.no-touch .cd-primary-nav a:hover {
+.no-touch .cd-primary-nav > ul > li > a:hover {
   background-color: #e36767;
 }
 .cd-primary-nav .cd-label {
@@ -179,52 +408,62 @@ nav, ul {
 }
 
 .cd-intro {
-  width: 100%;
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-perspective: 1px;
-          perspective: 1px;
-  background: green;
   display: -webkit-flex;
   display: flex;
   -webkit-align-items: center;
           align-items: center;
   -webkit-justify-content: center;
           justify-content: center;
-  z-index: 1;
-}
-
-.cd-intro__layer {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  padding: 100vh 0;
-}
-
-.cd-intro__layer--base {
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-}
-
-.cd-intro__layer--back {
-  -webkit-transform: translateZ(-1px);
-          transform: translateZ(-1px);
+  width: 100%;
+  background: url("../images/cover2x.jpg") no-repeat 50% 50%;
+  background-size: cover;
+  -webkit-transform: translateZ(-0.9px) scale(1.9);
+          transform: translateZ(-0.9px) scale(1.9);
+  z-index: -900;
+  text-align: center;
 }
 
 .cd-title {
-  color: white;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  display: inline-block;
+  color: #fff;
 }
 
 .content {
-  height: 100vh;
+  position: relative;
+  z-index: 2;
+  padding: 20px 10%;
+  top: 100%;
+  background-color: blue;
+}
+
+.cd-top {
+  display: block;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  top: auto;
+  left: auto;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background-color: rgba(2, 23, 37, 0.8);
+  background-image: url("../images/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  z-index: 9000;
+}
+.cd-top.cd-is-visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
 }

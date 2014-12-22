@@ -2,9 +2,10 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    title App
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
     link(rel='stylesheet', href='/css/app.css')
     link(rel='shortcut icon', type='image/ico', href='/favicon.ico')
+    title App
   body
     header.cd-header(role='banner')
       h1.cd-logo Grupo Super 8
@@ -13,8 +14,8 @@ html
         span.cd-menu-text Menu
         span.cd-menu-icon
 
-    nav
-      ul#primaryNav.cd-primary-nav
+    nav#primaryNav.cd-primary-nav
+      ul
         li.cd-label Sobre o Grupo Super 8
         li
           a(href='#time') O Time
@@ -22,10 +23,8 @@ html
           a(href='#time') Serviços
 
     section.cd-intro
-      .cd-intro__layer.cd-intro__layer--back
-        h2.cd-title Back
-      .cd-intro__layer.cd-intro__layer--base
-        h2.cd-title Grupo Super 8
+      div.cd-bg-cover
+      h2.cd-title Grupo Super 8
 
     main.content(role='main')
       article
@@ -33,5 +32,7 @@ html
         p Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
         p Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
         p Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.
+
+    a#goTop.cd-top(href='#top') Top
 
     script(src='js/app.js')

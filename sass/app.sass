@@ -2,6 +2,8 @@
 
 // Mixin
 @import mixin
+@import vendor/normalize
+// @import reset
 
 // colors
 $color-1: #021725 // blue
@@ -17,8 +19,8 @@ $header-height-M: 80px
 
 // z-index
 $content-zindex: 1
-$nav-zindex: 2
-$header-zindex: 3
+$nav-zindex: 3
+$header-zindex: 4
 
 // gutter
 $gutter: 20px
@@ -33,12 +35,18 @@ html, body
   height: 100%
   margin: 0
   padding: 0
-  // overflow: hidden
+  overflow: hidden
 
 body
   background: red
+  -webkit-overflow-scrolling: touch
+  overflow-y: auto
+  perspective: 1px
+  transform-style: preserve-3d
   &.overflow-hidden
     overflow: hidden
+
+// +parallax-init
 
 nav, ul
   margin: 0
@@ -76,7 +84,7 @@ nav, ul
   flex-flow: row nowrap
   align-items: center
 
-  .cd-ckbox
+  > .cd-ckbox
     /* autoprefixer: off */
     -moz-appearance: none
     -webkit-appearance: none
@@ -91,24 +99,29 @@ nav, ul
     width: 100%
     height: 100%
     cursor: pointer
+    z-index: 2
     &:focus
       outline: none
 
-  .cd-menu-text
+  > .cd-menu-text
+    position: relative
     flex: 0 1 auto
     color: $color-3
     text-transform: uppercase
     font-weight: 700
     margin-right: 5px
     font-family: Consolas, 'Liberation Mono', Courier, monospace
+    z-index: 1
 
-  .cd-menu-icon
+  > .cd-menu-icon
+    position: relative
     flex: 0 1 auto
     position: relative
     width: 18px
     height: 2px
     background-color: $color-3
     transition: background-color .3s
+    z-index: 1
 
     &::before, &:after
       content: ''
@@ -125,7 +138,7 @@ nav, ul
     &::after
       top: 5px
 
-  .cd-ckbox:checked ~ .cd-menu-icon
+  > .cd-ckbox:checked ~ .cd-menu-icon
 
     background-color: rgba($color-3, 0)
 
@@ -166,22 +179,24 @@ nav, ul
     transform: translateY(0%)
     transition: transform 0.4s ease-in-out
 
-  li
-    font-size: 22px
-    font-weight: 300
-    // @include font-smoothing
-    margin: .2em 0
-    text-transform: capitalize
+  > ul
+
+    > li
+      font-size: 22px
+      font-weight: 300
+      // @include font-smoothing
+      margin: .2em 0
+      text-transform: capitalize
 
 
-  a
-    display: inline-block
-    padding: .4em 1em
-    // @include border-radius
-    transition: background 0.2s
+      > a
+        display: inline-block
+        padding: .4em 1em
+        // @include border-radius
+        transition: background 0.2s
 
-    .no-touch &:hover
-      background-color: $color-2
+        .no-touch &:hover
+          background-color: $color-2
 
   .cd-label
     color: lighten($color-1, 15%)
@@ -191,89 +206,86 @@ nav, ul
     margin: 2.4em 0 .8em
 
 
-  // .cd-social
-  //   display: inline-block
-  //   margin: 0 .4em
-
-  //   a
-  //     width: 44px
-  //     height: 44px
-  //     padding: 0
-  //     background-image: url('../img/cd-socials.svg')
-  //     background-repeat: no-repeat
-
-  //     /* image replacement */
-  //     overflow: hidden
-  //     text-indent: 100%
-  //     white-space: nowrap
-
-
-
-  // .cd-facebook a
-  //   background-position: 0 0
-
-
-  // .cd-instagram a
-  //   background-position: -44px 0
-
-
-  // .cd-dribbble a
-  //   background-position: -88px 0
-
-
-  // .cd-twitter a
-  //   background-position: -132px 0
-
-
-  // &.is-visible
-  //   @include transform(translateY(0))
-
-
-  // @include MQ(M)
-  //   padding: $header-height-M 0
-
-
-  // @include MQ(L)
-  //   li
-  //     @include font-size(30px)
-
-
-  //   .cd-label
-  //     @include font-size(16px)
 
 .cd-intro
   // position: relative
-  width: 100%
+  // width: 100%
   height: 100vh
-  overflow-x: hidden
-  overflow-y: auto
-  perspective: 1px
-  background: green
+  // // overflow-x: hidden
+  // // overflow-y: auto
+  // perspective: 1px
 
   display: flex
   align-items: center
   justify-content: center
 
-  z-index: $content-zindex
+  // z-index: $content-zindex
 
-.cd-intro__layer
   position: absolute
   top: 0
-  right: 0
-  bottom: 0
   left: 0
+  width: 100%
+  // height: 0%
+  // padding-top: 20%
+  background: url('../images/cover2x.jpg') no-repeat 50% 50%
+  background-size: cover
+  transform: translateZ(-0.9px) scale(1.9)
+  z-index: -900
+  text-align: center
 
-  padding: 100vh 0
-
-.cd-intro__layer--base
-  transform: translateZ(0)
-
-.cd-intro__layer--back
-  transform: translateZ(-1px)
+  // > .cd-bg-cover
+  //   +parallax(-0.6)
+  //   position: absolute
+  //   width: 100%
+  //   height: 100%
+  //   top: 0
+  //   left: 0
+  //   bottom: auto
+  //   right: auto
+  //   background:
+  //     color: black
+  //     image: url('../images/cover2x.jpg')
+  //     repeat: no-repeat
+  //     position: center center
+  //     origin: border-box
+  //     attachment: fixed
+  //     size: cover
 
 .cd-title
-  color: white
-  +center
+  display: inline-block
+  color: $color-3
 
 .content
-  height: 100vh
+  position: relative
+  z-index: $content-zindex + 1
+  padding: 20px 10%
+  top: 100%
+  background-color: blue
+
+.cd-top
+  display: block
+  height: 40px
+  width: 40px
+  position: fixed
+  top: auto
+  left: auto
+  bottom: 20px
+  right: 20px
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05)
+  overflow: hidden
+  text-indent: 100%
+  white-space: nowrap
+  background:
+    color: rgba($color-1, 0.8)
+    image: url('../images/arrow.svg')
+    repeat: no-repeat
+    position: center 50%
+  visibility: hidden
+  opacity: 0
+  transition: opacity .3s 0s, visibility 0s .3s
+  z-index: 9000
+
+  &.cd-is-visible
+    visibility: visible
+    opacity: 1
+    transition: opacity .3s 0s, visibility 0s 0s
