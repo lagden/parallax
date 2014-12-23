@@ -9,7 +9,9 @@ html
     title App
   body
     header.cd-header(role='banner')
-      h1.cd-logo Grupo Super 8
+      a.cd-logo(href='#home')
+        img(src='/images/logo.svg', height='55', alt='Grupo Super 8')
+        span Grupo Super 8
       .cd-primary-nav-trigger
         input#primaryNavTrigger.cd-ckbox(type='checkbox', name='menuTrigger')
         span.cd-menu-text Menu
@@ -17,15 +19,30 @@ html
 
     nav#primaryNav.cd-primary-nav
       ul
-        li.cd-label Sobre o Grupo Super 8
+        li.cd-label Sobre
         li
-          a(href='#time') O Time
+          a(href='#xxx') Ascessoria Cerimonial
+
+        li.cd-label Serviços
         li
-          a(href='#time') Serviços
+          a(href='#xxx') Eventos
+
+        li.cd-label Mais
+        li
+          a(href='#xxx') Blog
+        li
+          a(href='#xxx') Contato
+
+        li.cd-label Social
+        li.cd-social.cd-facebook
+          a(href='#xxx') Facebook
+        li.cd-social.cd-instagram
+          a(href='#xxx') Instagram
+        li.cd-social.cd-twitter
+          a(href='#xxx') Twitter
 
     section#intro.cd-intro
       .cd-bg-cover
-      h2.cd-title Grupo Super 8
 
     main.content(role='main')
       article

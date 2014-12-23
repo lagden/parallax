@@ -221,6 +221,10 @@ th {
   box-sizing: border-box;
 }
 
+html {
+  font-family: "Roboto Slab", serif;
+}
+
 html,
 body {
   margin: 0;
@@ -241,45 +245,63 @@ nav, ul {
 
 .cd-header {
   width: 100%;
-  position: relative;
-  background: green;
+  position: absolute;
   z-index: 4;
-}
-
-.cd-logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  bottom: auto;
-  right: auto;
-  width: 39px;
-  height: 50px;
-  padding: 0;
-  margin: 0;
-  background-image: url("../images/logo.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-}
-@media only screen and (min-width: 768px) {
-  .cd-logo {
-    width: 78px;
-    height: 100px;
-  }
-}
-
-.cd-primary-nav-trigger {
-  position: absolute;
-  right: 20px;
-  top: 20px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-flow: row nowrap;
           flex-flow: row nowrap;
   -webkit-align-items: center;
           align-items: center;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding: 15px;
+  background-color: rgba(2, 23, 37, 0.3);
+  transition: background-color 0.4s ease-in-out;
+}
+.cd-header.menu-open {
+  background-color: rgba(2, 23, 37, 0.9);
+}
+
+.cd-logo {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+  color: #fff;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.cd-logo:active, .cd-logo:focus {
+  outline: none;
+}
+.cd-logo > img {
+  width: auto;
+  height: 55px;
+}
+.cd-logo > span {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 1.3em;
+}
+@media only screen and (min-width: 768px) {
+  .cd-logo > span {
+    margin-left: 15px;
+    font-size: 1.5em;
+  }
+}
+
+.cd-primary-nav-trigger {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-align-items: center;
+          align-items: center;
+  position: relative;
 }
 .cd-primary-nav-trigger > .cd-ckbox {
   /* autoprefixer: off */
@@ -307,22 +329,29 @@ nav, ul {
           flex: 0 1 auto;
   color: #fff;
   font-weight: 700;
-  margin-right: 5px;
+  margin-right: 10px;
   font-family: "Damion", cursive;
   z-index: 1;
+  font-size: 1.5em;
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .cd-primary-nav-trigger > .cd-menu-text {
+    display: block;
+  }
 }
 .cd-primary-nav-trigger > .cd-menu-icon {
   position: relative;
   -webkit-flex: 0 1 auto;
           flex: 0 1 auto;
   position: relative;
-  width: 18px;
-  height: 2px;
+  width: 25px;
+  height: 4px;
   background-color: #fff;
   transition: background-color 0.3s;
   z-index: 1;
 }
-.cd-primary-nav-trigger > .cd-menu-icon::before, .cd-primary-nav-trigger > .cd-menu-icon:after {
+.cd-primary-nav-trigger > .cd-menu-icon:before, .cd-primary-nav-trigger > .cd-menu-icon:after {
   content: "";
   width: 100%;
   height: 100%;
@@ -332,11 +361,11 @@ nav, ul {
   transition: -webkit-transform 0.3s, top 0.3s, background-color 0s;
   transition: transform 0.3s, top 0.3s, background-color 0s;
 }
-.cd-primary-nav-trigger > .cd-menu-icon::before {
-  top: -5px;
+.cd-primary-nav-trigger > .cd-menu-icon:before {
+  top: -7px;
 }
-.cd-primary-nav-trigger > .cd-menu-icon::after {
-  top: 5px;
+.cd-primary-nav-trigger > .cd-menu-icon:after {
+  top: 7px;
 }
 .cd-primary-nav-trigger > .cd-ckbox:checked ~ .cd-menu-icon {
   background-color: rgba(255, 255, 255, 0);
@@ -382,6 +411,9 @@ nav, ul {
   transition: -webkit-transform 0.4s ease-in-out;
   transition: transform 0.4s ease-in-out;
 }
+.cd-primary-nav > ul {
+  list-style: none;
+}
 .cd-primary-nav > ul > li {
   font-size: 22px;
   font-weight: 300;
@@ -389,31 +421,55 @@ nav, ul {
   text-transform: capitalize;
 }
 .cd-primary-nav > ul > li > a {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+  color: #fff;
   display: inline-block;
   padding: 0.4em 1em;
   transition: background 0.2s;
 }
-.no-touch .cd-primary-nav > ul > li > a:hover {
+.cd-primary-nav > ul > li > a:active, .cd-primary-nav > ul > li > a:focus {
+  outline: none;
+}
+.cd-primary-nav > ul > li > a:hover {
   background-color: #e36767;
 }
-.cd-primary-nav .cd-label {
+.cd-primary-nav > ul > li.cd-label {
   color: #06446e;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
   margin: 2.4em 0 0.8em;
 }
+.cd-primary-nav > ul > li.cd-social {
+  display: inline-block;
+  margin: 0 0.4em;
+}
+.cd-primary-nav > ul > li.cd-social > a {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background-image: url("../images/socials.svg");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  text-indent: 105%;
+  white-space: nowrap;
+}
+.cd-primary-nav > ul > li.cd-facebook > a {
+  background-position: 0 0;
+}
+.cd-primary-nav > ul > li.cd-instagram > a {
+  background-position: -44px 0;
+}
+.cd-primary-nav > ul > li.cd-twitter > a {
+  background-position: -132px 0;
+}
 
 .cd-intro {
   position: relative;
   width: 100%;
   overflow: hidden;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-justify-content: center;
-          justify-content: center;
   z-index: 1;
 }
 .cd-intro > .cd-bg-cover {
@@ -432,22 +488,16 @@ nav, ul {
   z-index: -900;
 }
 
-.cd-title {
-  font-family: "Damion", cursive;
-  font-size: 7vw;
-  display: inline-block;
-  color: #fff;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-}
-
 .content {
   position: relative;
   padding: 20px 10%;
-  background-color: blue;
+  background-color: #fff;
   z-index: 2;
+  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.85);
 }
 
 .cd-top {
+  border-radius: 50em;
   display: block;
   height: 40px;
   width: 40px;

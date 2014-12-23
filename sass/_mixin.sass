@@ -1,3 +1,11 @@
+=unstyled-link
+  color: inherit
+  text-decoration: inherit
+  cursor: inherit
+  &:active,
+  &:focus
+    outline: none
+
 =center($xy: xy)
   position: absolute
   @if $xy == xy
@@ -54,14 +62,14 @@ $L: 1170px
 
 // Media Queries
 =mq($canvas)
-  @if $canvas == S
+  @if $canvas == 'S'
     @media only screen and (min-width: $S)
       @content
 
-  @else if $canvas == M
+  @else if $canvas == 'M'
     @media only screen and (min-width: $M)
       @content
 
-  @else if $canvas == L
+  @else if $canvas == 'L'
     @media only screen and (min-width: $L)
       @content

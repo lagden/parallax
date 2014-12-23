@@ -39,6 +39,7 @@ window.raf = (function() {
   var $ = d.querySelector.bind(d);
   var docHtml = $('html');
   var docBody = d.body || $('body');
+  var header = $('body > .cd-header');
   var primaryNavTrigger = $('#primaryNavTrigger');
   var primaryNav = $('#primaryNav');
   var intro = $('#intro');
@@ -113,6 +114,7 @@ window.raf = (function() {
     primaryNav.classList[m]('cd-primary-nav--open');
     docHtml.classList[m]('menu-open');
     docBody.classList[m]('menu-open');
+    header.classList[m]('menu-open');
   }
 
   // Listener Scroll Go to the Top
@@ -188,7 +190,7 @@ window.raf = (function() {
 
 var WebFontConfig = {
   google: {
-    families: ['Damion::latin']
+    families: ['Damion::latin', 'Roboto+Slab::latin']
   }
 };
 

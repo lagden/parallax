@@ -30,6 +30,10 @@ $gutter: 20px
 *:after
   box-sizing: border-box
 
+html
+  // font-family: 'Roboto', sans-serif
+  font-family: 'Roboto Slab', serif
+
 html,
 body
   margin: 0
@@ -47,40 +51,42 @@ nav, ul
 
 .cd-header
   width: 100%
-  position: relative
-  background: green
+  position: absolute
   z-index: $header-zindex
-
-.cd-logo
-  position: absolute
-  top: $gutter
-  left: $gutter
-  bottom: auto
-  right: auto
-  width: 39px
-  height: 50px
-  padding: 0
-  margin: 0
-  background:
-    image: url('../images/logo.svg')
-    repeat: no-repeat
-    size: cover
-  overflow: hidden
-  text-indent: 100%
-  white-space: nowrap
-
-  +mq(M)
-    width: 39px * 2
-    height: 50px * 2
-
-
-.cd-primary-nav-trigger
-  position: absolute
-  right: $gutter
-  top: $gutter
   display: flex
   flex-flow: row nowrap
   align-items: center
+  justify-content: space-between
+  padding: 15px
+  background-color: rgba($color-1, 0.3)
+  transition: background-color 0.4s ease-in-out
+  &.menu-open
+    background-color: rgba($color-1, 0.9)
+
+.cd-logo
+  +unstyled-link
+  color: $color-3
+  display: flex
+  flex-flow: row nowrap
+  align-items: center
+  > img
+    width: auto
+    height: 55px
+  > span
+    display: inline-block
+    margin-left: 10px
+    font-size: 1.3em
+
+  +mq('M')
+    > span
+      margin-left: 15px
+      font-size: 1.5em
+
+.cd-primary-nav-trigger
+  display: flex
+  flex-flow: row nowrap
+  align-items: center
+  position: relative
 
   > .cd-ckbox
     /* autoprefixer: off */
@@ -105,23 +111,27 @@ nav, ul
     position: relative
     flex: 0 1 auto
     color: $color-3
-    // text-transform: uppercase
     font-weight: 700
-    margin-right: 5px
+    margin-right: 10px
     font-family: 'Damion', cursive
     z-index: 1
+    font-size: 1.5em
+    display: none
+    +mq('M')
+      display: block
 
   > .cd-menu-icon
+    $dist: 7px
     position: relative
     flex: 0 1 auto
     position: relative
-    width: 18px
-    height: 2px
+    width: 25px
+    height: 4px
     background-color: $color-3
     transition: background-color .3s
     z-index: 1
 
-    &::before, &:after
+    &:before, &:after
       content: ''
       width: 100%
       height: 100%
@@ -130,14 +140,13 @@ nav, ul
       right: 0
       transition: transform 0.3s, top 0.3s, background-color 0s
 
-    &::before
-      top: -5px
+    &:before
+      top: -$dist
 
-    &::after
-      top: 5px
+    &:after
+      top: $dist
 
   > .cd-ckbox:checked ~ .cd-menu-icon
-
     background-color: rgba($color-3, 0)
 
     &::before,
@@ -163,10 +172,8 @@ nav, ul
   padding: $header-height-S 0
   -webkit-backface-visibility: hidden
   backface-visibility: hidden
-
   overflow: auto
   -webkit-overflow-scrolling: touch
-
   visibility: hidden
   transform: translateY(-100%)
   transition: transform 0.4s ease-in-out, visibility 0s 0.4s
@@ -178,40 +185,56 @@ nav, ul
     transition: transform 0.4s ease-in-out
 
   > ul
+    list-style: none
 
     > li
       font-size: 22px
       font-weight: 300
-      // @include font-smoothing
       margin: .2em 0
       text-transform: capitalize
-
-
       > a
+        +unstyled-link
+        color: $color-3
         display: inline-block
         padding: .4em 1em
-        // @include border-radius
         transition: background 0.2s
 
-        .no-touch &:hover
+        &:hover
           background-color: $color-2
 
-  .cd-label
-    color: lighten($color-1, 15%)
-    text-transform: uppercase
-    font-weight: 700
-    font-size: 14px
-    margin: 2.4em 0 .8em
+      &.cd-label
+        color: lighten($color-1, 15%)
+        text-transform: uppercase
+        font-weight: 700
+        font-size: 14px
+        margin: 2.4em 0 .8em
+
+      &.cd-social
+        display: inline-block
+        margin: 0 .4em
+        > a
+          width: 44px
+          height: 44px
+          padding: 0
+          background-image: url('../images/socials.svg')
+          background-repeat: no-repeat
+          overflow: hidden
+          text-indent: 105%
+          white-space: nowrap
+
+      &.cd-facebook > a
+        background-position: 0 0
+
+      &.cd-instagram > a
+        background-position: -44px 0
+
+      &.cd-twitter > a
+        background-position: -132px 0
 
 .cd-intro
   position: relative
   width: 100%
   overflow: hidden
-
-  display: flex
-  align-items: center
-  justify-content: center
-
   z-index: $content-zindex
 
   > .cd-bg-cover
@@ -230,20 +253,15 @@ nav, ul
       size: cover
     z-index: -900
 
-.cd-title
-  font-family: 'Damion', cursive
-  font-size: 7vw
-  display: inline-block
-  color: $color-3
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9)
-
 .content
   position: relative
   padding: 20px 10%
-  background-color: blue
+  background-color: $color-3
   z-index: $content-zindex + 1
+  box-shadow: -10px 0 50px rgba(0, 0, 0, 0.85)
 
 .cd-top
+  border-radius: 50em
   display: block
   height: 40px
   width: 40px
