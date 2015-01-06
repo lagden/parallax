@@ -1,0 +1,24 @@
+{
+  "name": "parallax",
+  "version": "0.0.1",
+  "homepage": "https://github.com/lagden/parallax",
+  "authors": [
+    "Thiago Lagden <lagden@gmail.com>"
+  ],
+  "description": "have a fun",
+  "keywords": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "system.js": "~0.11.0"
+  }
+}

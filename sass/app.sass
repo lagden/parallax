@@ -9,6 +9,7 @@
 $color-1: #021725 // blue
 $color-2: #e36767 // red
 $color-3: #fff // white
+$color-4: #f1f1f1 // white
 
 // fonts
 $primary-font: 'Source Sans Pro', sans-serif
@@ -50,13 +51,13 @@ nav, ul
   padding: 0
 
 .cd-header
-  width: 100%
-  position: absolute
-  z-index: $header-zindex
   display: flex
   flex-flow: row nowrap
   align-items: center
   justify-content: space-between
+  width: 100%
+  position: absolute
+  z-index: $header-zindex
   padding: 15px
   background-color: rgba($color-1, 0.3)
   transition: background-color 0.4s ease-in-out
@@ -234,6 +235,7 @@ nav, ul
 .cd-intro
   position: relative
   width: 100%
+  height: 100vh
   overflow: hidden
   z-index: $content-zindex
 
@@ -256,9 +258,18 @@ nav, ul
 .content
   position: relative
   padding: 20px 10%
-  background-color: $color-3
+  background-color: $color-4
   z-index: $content-zindex + 1
   box-shadow: -10px 0 50px rgba(0, 0, 0, 0.85)
+
+
+.cd-footer
+  box-sizing: border-box
+  background-color: rgba($color-1, 0.8)
+  color: $color-3
+  padding: 20px 10%
+  position: fixed
+  bottom: 0
 
 .cd-top
   border-radius: 50em

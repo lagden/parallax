@@ -30,7 +30,7 @@ module.exports = (grunt) ->
           noCache: true
           update: false
           unixNewlines: true
-          trace: true
+          trace: false
           sourcemap: 'none'
         files: [
           expand: true
@@ -46,11 +46,18 @@ module.exports = (grunt) ->
         browsers: ['last 1 version']
       files:
         expand: true
-        # flatten: true
         cwd: 'css'
-        src: ['./*.css']
+        src: ['*.css', '!*.min.css', '!*.con.css']
         dest: 'css'
         ext: '.css'
+
+    csso:
+      dynamic_mappings:
+        expand: true
+        cwd: 'css'
+        src: ['*.css', '!*.min.css']
+        dest: 'css'
+        ext: '.min.css'
 
     concurrent:
       dev: [
@@ -59,10 +66,9 @@ module.exports = (grunt) ->
       ]
 
     watch:
-
       sass:
         files: ['sass/**/*.sass']
-        tasks: ['sass', 'autoprefixer']
+        tasks: ['sass', 'autoprefixer', 'csso', 'shell:cssc']
 
       jade:
         files: ['jade/html/{,*/}*.jade']
@@ -71,7 +77,7 @@ module.exports = (grunt) ->
     browserSync:
       dev:
         bsFiles:
-          src: 'css/*.css'
+          src: 'css/*.con.css'
         options:
           notify: true
           watchTask: true
@@ -79,10 +85,18 @@ module.exports = (grunt) ->
           server:
             baseDir: './'
 
+    shell:
+      cssc:
+        command: [
+          'node_modules/css-condense/bin/cssc css/app.min.css > css/app.con.css'
+        ].join ';'
+
 
   grunt.registerTask 'default', [
     'concurrent:dev'
     'autoprefixer'
+    'csso'
+    'shell:cssc'
   ]
 
   grunt.registerTask 'server', [
